@@ -2,5 +2,8 @@
   "name": "Custom Topics Sidebar",
   "about_url": "",
   "license_url": "",
-  "component": true
+  "component": true,
+  "modifiers": {
+    "svg_icons": ["square-full", "circle", "link"]
+  }
 }
