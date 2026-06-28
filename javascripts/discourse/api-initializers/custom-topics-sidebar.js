@@ -38,7 +38,13 @@ function customLinks() {
         return null;
       }
 
-      return { text, href, icon, visibility, index };
+      // Existing installations may retain the old default `link` icon even
+      // after the setting default changes. Upgrade that legacy value at render
+      // time without overriding an icon explicitly chosen by an admin.
+      const resolvedIcon =
+        href === "/top" && icon === "link" ? "arrow-right" : icon;
+
+      return { text, href, icon: resolvedIcon, visibility, index };
     })
     .filter(Boolean);
 }
