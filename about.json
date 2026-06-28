@@ -4,6 +4,6 @@
   "license_url": "",
   "component": true,
   "modifiers": {
-    "svg_icons": ["square-full", "circle", "link"]
+    "svg_icons": ["circle", "link"]
   }
 }

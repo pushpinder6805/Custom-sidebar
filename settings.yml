@@ -4,6 +4,26 @@ custom_topics_sidebar_enabled:
 custom_topics_sidebar_title:
   default: "Topics"
 
+custom_topics_sidebar_title_font_size:
+  default: 100
+  min: 50
+  max: 200
+  description: "Title font size as a percentage of the Discourse sidebar default."
+
+custom_topics_sidebar_title_color:
+  default: "inherit"
+  description: "Title color. Accepts CSS colors, hex values, or variables such as var(--primary)."
+
+custom_topics_sidebar_item_font_size:
+  default: 100
+  min: 50
+  max: 200
+  description: "Category and custom-link font size as a percentage of the Discourse sidebar default."
+
+custom_topics_sidebar_item_color:
+  default: "inherit"
+  description: "Category and custom-link text color. Accepts CSS colors, hex values, or variables such as var(--primary)."
+
 custom_topics_sidebar_category_ids:
   type: list
   default: "65|17|71|76|37|44|52"

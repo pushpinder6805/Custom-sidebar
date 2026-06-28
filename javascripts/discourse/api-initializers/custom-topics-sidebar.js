@@ -98,8 +98,6 @@ export default apiInitializer((api) => {
         route = "discovery.category";
         currentWhen =
           "discovery.unreadCategory discovery.hotCategory discovery.topCategory discovery.newCategory discovery.latestCategory discovery.category discovery.categoryNone discovery.categoryAll";
-        prefixType = "icon";
-        prefixValue = "square-full";
         suffixType = "icon";
         suffixCSSClass = "unread";
 
@@ -126,14 +124,6 @@ export default apiInitializer((api) => {
           return this.category.displayName || this.category.name;
         }
 
-        get prefixColor() {
-          return (
-            this.category.color ||
-            this.category.parentCategory?.color ||
-            "0088CC"
-          );
-        }
-
         get suffixValue() {
           if (
             hasUnreadTopics(
@@ -148,7 +138,8 @@ export default apiInitializer((api) => {
       }
 
       class CustomTopicsLink extends BaseCustomSidebarSectionLink {
-        prefixType = "icon";
+        suffixType = "icon";
+        suffixCSSClass = "custom-link-icon";
 
         constructor({ link, router }) {
           super(...arguments);
@@ -174,7 +165,7 @@ export default apiInitializer((api) => {
           return this.link.text;
         }
 
-        get prefixValue() {
+        get suffixValue() {
           return this.link.icon;
         }
 
