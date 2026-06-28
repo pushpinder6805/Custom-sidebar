@@ -1,0 +1,19 @@
+custom_topics_sidebar_enabled:
+  default: true
+
+custom_topics_sidebar_title:
+  default: "Topics"
+
+custom_topics_sidebar_category_ids:
+  type: list
+  default: "65|17|71|76|37|44|52"
+
+custom_topics_sidebar_custom_links:
+  type: list
+  default: "All Topics,/top,link|Latest,/latest,link"
+
+custom_topics_sidebar_collapsed_by_default:
+  default: false
+
+custom_topics_sidebar_show_for_anon:
+  default: true
