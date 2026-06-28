@@ -1,0 +1,24 @@
+.custom-topics-sidebar-section {
+  .sidebar-section-link {
+    min-width: 0;
+  }
+
+  .sidebar-section-link-content-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .sidebar-section-link-suffix.unread {
+    margin-left: auto;
+    color: var(--tertiary);
+    font-size: 0.55em;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .sidebar-section-link.active,
+  .sidebar-section-link.sidebar-section-link--active {
+    background: var(--d-selected);
+  }
+}
