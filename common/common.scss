@@ -1,16 +1,9 @@
 [data-section-name="custom-topics"] {
-  .sidebar-section-header-text {
-    color: $custom-topics-sidebar-title-color;
-    font-size: #{$custom-topics-sidebar-title-font-size}%;
-  }
-
   .sidebar-section-link {
     min-width: 0;
   }
 
   .sidebar-section-link-content-text {
-    color: $custom-topics-sidebar-item-color;
-    font-size: #{$custom-topics-sidebar-item-font-size}%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
