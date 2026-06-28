@@ -2,12 +2,14 @@
   .sidebar-section-link {
     min-width: 0;
   }
-      [data-section-name="custom-topics"] .sidebar-section-link-content-text {
-        font-family: arial;
-        font-size: 16px;
-        font-weight: 400;
-        color: #002d73;
-    }
+
+  .sidebar-section-link-content-text {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #002d73;
+  }
+}
 
   .sidebar-section-link-content-text {
     overflow: hidden;
