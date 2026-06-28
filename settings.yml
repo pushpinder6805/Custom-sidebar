@@ -12,8 +12,5 @@ custom_topics_sidebar_custom_links:
   type: list
   default: "All Topics,/top,arrow-right|Latest,/latest,link"
 
-custom_topics_sidebar_collapsed_by_default:
-  default: false
-
 custom_topics_sidebar_show_for_anon:
   default: true

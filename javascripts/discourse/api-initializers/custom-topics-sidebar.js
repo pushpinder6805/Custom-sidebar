@@ -1,7 +1,9 @@
 import { tracked } from "@glimmer/tracking";
+import { schedule } from "@ember/runloop";
 import { service } from "@ember/service";
 import { dasherize } from "@ember/string";
 import { apiInitializer } from "discourse/lib/api";
+import { getCollapsedSidebarSectionKey } from "discourse/lib/sidebar/helpers";
 import Category from "discourse/models/category";
 import { settings } from "virtual:theme";
 
@@ -192,6 +194,7 @@ export default apiInitializer((api) => {
 
       return class CustomTopicsSidebarSection extends BaseCustomSidebarSection {
         @service currentUser;
+        @service keyValueStore;
         @service router;
         @service site;
         @service topicTrackingState;
@@ -215,7 +218,7 @@ export default apiInitializer((api) => {
         }
 
         get collapsedByDefault() {
-          return settings.custom_topics_sidebar_collapsed_by_default;
+          return false;
         }
 
         get displaySection() {
@@ -231,6 +234,26 @@ export default apiInitializer((api) => {
 
         get links() {
           this.refreshToken;
+
+          this.keyValueStore.setItem(
+            getCollapsedSidebarSectionKey(this.name),
+            "false",
+          );
+
+          if (!this.headerLockScheduled) {
+            this.headerLockScheduled = true;
+            schedule("afterRender", () => {
+              document
+                .querySelectorAll(
+                  '[data-section-name="custom-topics"] .sidebar-section-header',
+                )
+                .forEach((header) => {
+                  header.setAttribute("tabindex", "-1");
+                  header.setAttribute("aria-disabled", "true");
+                  header.removeAttribute("title");
+                });
+            });
+          }
 
           // Discourse assigns the Ember owner after constructing API sections,
           // so services must not be accessed from the constructor.
