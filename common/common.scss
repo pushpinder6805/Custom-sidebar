@@ -27,12 +27,13 @@
   }
 
   .sidebar-section-link-suffix.custom-link-icon {
+    font-size: 14px !important;
     color: inherit;
     display: inline-flex;
     align-items: center;
-    font-size: 1em;
-    margin-left: 82px;
-  }
+    color: #002d73 !important;
+    margin-left: 90px;
+}
 
   .sidebar-section-link-suffix.unread {
     margin-left: auto;
