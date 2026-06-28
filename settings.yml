@@ -10,7 +10,7 @@ custom_topics_sidebar_category_ids:
 
 custom_topics_sidebar_custom_links:
   type: list
-  default: "All Topics,/top,link|Latest,/latest,link"
+  default: "All Topics,/top,arrow-right|Latest,/latest,link"
 
 custom_topics_sidebar_collapsed_by_default:
   default: false
