@@ -52,47 +52,28 @@ function customLinks() {
 }
 
 function hasUnreadTopics(category, topicTrackingState, currentUser) {
-  try {
-    if (currentUser?.unified_new_enabled) {
-      return (
-        topicTrackingState.countNewAndUnread?.({ categoryId: category.id }) > 0
-      );
-    }
-
-    if (
-      topicTrackingState.countUnread?.({ categoryId: category.id }) > 0 ||
-      topicTrackingState.countNew?.({ categoryId: category.id }) > 0
-    ) {
-      return true;
-    }
-  } catch {
-    // Fall back to the serialized category counts on older Discourse versions.
+  if (!currentUser) {
+    return false;
   }
 
-  return [
-    category.stat,
-    category.unread_count,
-    category.unread_topics,
-    category.unreadTopics,
-    category.new_count,
-    category.new_topics,
-    category.newTopics,
-    category.hasUnread,
-    category.hasNew,
-    category.has_unread,
-    category.has_new,
-  ].some((value) => {
-    if (value === true || (typeof value === "number" && value > 0)) {
-      return true;
+  const categoryId = category.id;
+
+  try {
+    if (
+      currentUser.unified_new_enabled &&
+      typeof topicTrackingState.countNewAndUnread === "function"
+    ) {
+      return topicTrackingState.countNewAndUnread({ categoryId }) > 0;
     }
 
-    if (typeof value === "string") {
-      const normalized = value.trim().toLowerCase();
-      return normalized !== "" && normalized !== "0" && normalized !== "false";
-    }
-
+    return (
+      (topicTrackingState.countUnread?.({ categoryId }) ?? 0) > 0 ||
+      (topicTrackingState.countNew?.({ categoryId }) ?? 0) > 0
+    );
+  } catch {
+    // Never guess from category totals: a static topic count is not unread state.
     return false;
-  });
+  }
 }
 
 export default apiInitializer((api) => {
