@@ -1,4 +1,12 @@
 [data-section-name="custom-topics"] {
+  .sidebar-section-header-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #002d73 !important;
+  }
+}
+
+[data-section-name="custom-topics"] {
   .sidebar-section-header-caret {
     display: none;
   }
